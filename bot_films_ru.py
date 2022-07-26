@@ -12,21 +12,26 @@ URL = 'https://www.film.ru/a-z/serials'
 bot = telebot.TeleBot('5497131074:AAEpCyP-0saGTFWbWaQAtlQAmM6oKCm4hmA')
 
 
-@bot.message_handler(comannds=['admin'])
-def admin(message):
-    info = os.name
-    print(message)
-    bot.reply_to(message.chat.id, info)
-
-@bot.message_handler(comannds=['say'])
-def say(message):
-    text = ' '.join(message.text.split(' ')[1:])
-    print(message)
-    bot.reply_to(message, f'***{text.upper()}***')
+# @bot.message_handler(comannds=['admin'])
+# def admin(message):
+#     if message.from_user.username == 'JumboJambo':
+#         info = os.name
+#         print(message)
+#         bot.reply_to(message, info)
+#     else:
+#         bot.reply_to(message, 'Метод не доступен')
+#
+#
+# @bot.message_handler(comannds=['say'])
+# def say(message):
+#     text = ' '.join(message.text.split(' ')[1:])
+#     print(message)
+#     bot.reply_to(message, f'***{text.upper()}***')
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    time.sleep(3)
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
     top30_serials = types.KeyboardButton('ТОП 30 сериалов')
     top30_films = types.KeyboardButton('ТОП 30 фильмов')
